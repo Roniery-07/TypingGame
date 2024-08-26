@@ -1,0 +1,30 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    overflow: hidden;
+}
+
+
+
+.game-container span{
+    font-size: 25px;
+    font-weight: bold;
+    left: -50px;
+}
+
+.type-space{
+    margin: 20px;
+    position: fixed;
+    bottom: 40px;
+    right: 0px;
+}
+
+.type-space input{
+    text-align: end;
+    font-size: 50px;
+    border: none;
+    background-color: transparent;
+}
+.reset-btn {
+    position: fixed;
+}
