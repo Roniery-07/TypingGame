@@ -3,7 +3,7 @@ const canvas = document.querySelector(".game-container");
 const resetBtn = document.querySelector(".reset-btn");
 const c = canvas.getContext("2d");
 const url = "https://api.dicionario-aberto.net/random";
-const numberWords = 50;
+let numberWords = 3;
 const wordsFetch = [];
 const words = [];
 let isRunning = true;
@@ -59,15 +59,24 @@ document.addEventListener("keydown", (e) => {
 function spawnWord() {
     intervalID = setInterval(() => {
         if (wordsFetch.length > 0) {
-            words.push(new Word(wordsFetch[0], -300, Math.random() * (canvas.height - 50), 4));
+            words.push(new Word(wordsFetch[0], -300, (Math.random() * canvas.height) - 50 , 4));
             wordsFetch.shift();
         }
+
+        if(wordsFetch.length < 10 ){
+        console.log("reabastecendo")
+        fetchData()
+        
+    }
+
     }, 3000);
 }
 
 let animationID;
 
-function animate() {
+
+
+async function animate() {
     animationID = requestAnimationFrame(animate);
     c.fillStyle = "white";
     c.fillRect(0, 0, canvas.width, canvas.height); // Limpa o canvas a cada frame
@@ -81,10 +90,14 @@ function animate() {
         }
         word.update(); // Atualiza a posição da palavra
     });
+
+    
+
 }
 
 resetBtn.addEventListener("click", () => {
     if (!isRunning) {
+        numberWords = 3
         startGame(); // Reinicia o jogo
     }
 });
@@ -94,10 +107,18 @@ async function startGame() {
     wordsFetch.length = 0; // Limpa as palavras a serem buscadas
     input.value = ""; // Limpa o input
     isRunning = true;
-    await fetchData(); // Aguarda o carregamento das palavras
+    if(wordsFetch.length == 0){ 
+        await fetchData(); // Aguarda o carregamento das palavras
+        numberWords = 20
+    }
+    
     animate();
     spawnWord();
 }
 
+
+
+
 // Começa o jogo
+
 startGame();
