@@ -1,0 +1,26 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
+.form-nickname{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    
+}
+
+.form-nickname label{
+    margin: 10px;
+}
+.form-nickname input {
+    margin: 10px;
+}
+.form-nickname button {
+    margin: 10px
+}
+

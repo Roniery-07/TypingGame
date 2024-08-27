@@ -1,0 +1,17 @@
+{
+  "name": "typegame",
+  "version": "1.0.0",
+  "description": "This project started as a typing mini-game, evenctually I gonna make this a typing race game online.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5"
+  }
+}
